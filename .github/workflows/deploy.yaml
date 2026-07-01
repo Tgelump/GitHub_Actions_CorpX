@@ -45,7 +45,7 @@ jobs:
         run: npm ci --ignore-scripts
 
       - name: Run linters
-        run: npm run lint
+        run: npm run lint:all
 
       - name: Run scripts
         env:
