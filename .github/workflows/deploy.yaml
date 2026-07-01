@@ -43,7 +43,12 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-             npm rebuild sharp
+
+      - name: Remove pagefind (fix install bug)
+        run: npm remove pagefind || true
+
+      - name: Rebuild sharp
+        run: npm rebuild sharp
 
       - name: Run linters
         run: npm run lint:all
@@ -78,7 +83,13 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-             npm rebuild sharp
+
+      - name: Remove pagefind (fix install bug)
+        run: npm remove pagefind || true
+
+      - name: Rebuild sharp
+        run: npm rebuild sharp
+
 
       - name: Set PATH_PREFIX
         run: echo "PATH_PREFIX=/${GITHUB_REPOSITORY#*/}/" >> $GITHUB_ENV
