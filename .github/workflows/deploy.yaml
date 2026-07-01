@@ -76,7 +76,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --ignore-scripts
 
       - name: Set PATH_PREFIX
         run: echo "PATH_PREFIX=/${GITHUB_REPOSITORY#*/}/" >> $GITHUB_ENV
