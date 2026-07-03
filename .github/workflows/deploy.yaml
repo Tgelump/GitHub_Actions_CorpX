@@ -106,19 +106,21 @@ jobs:
       - name: Create deployment issue
         if: success()
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           URL: ${{ steps.deployment.outputs.page_url }}
         run: |
           gh issue create \
+            --repo "${{ github.repository }}" \
             --title "$(date +%F) - Deployment: Success" \
             --body "URL: ${URL}"
 
       - name: Create failed deployment issue
         if: failure()
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh issue create \
+            --repo "${{ github.repository }}" \
             --title "$(date +%F) - Deployment: Failed" \
             --body "URL: N/A"
 
